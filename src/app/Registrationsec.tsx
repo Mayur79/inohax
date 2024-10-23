@@ -11,7 +11,7 @@ const Registration: React.FC = () => {
   };
 
   // Handle input changes for team members
-  const handleTeamMemberChange = (index: number, field: string, value: string) => {
+  const handleTeamMemberChange = (index: number, field: keyof typeof teamMembers[0], value: string) => {
     const updatedMembers = [...teamMembers];
     updatedMembers[index][field] = value;
     setTeamMembers(updatedMembers);
@@ -50,7 +50,14 @@ const Registration: React.FC = () => {
       </div>
       <div>
         <label>Team Leader Phone Number*</label>
-        <input {...register('teamLeaderPhone', { required: true })} />
+        <input
+          {...register('teamLeaderPhone', { required: true })}
+          onChange={(e) => {
+            // Remove the handleTeamMemberChange call for teamLeaderPhone
+            // as it's not part of the teamMembers array
+            e.target.value; // This line is added to use the event, preventing unused variable warning
+          }}
+        />
       </div>
       <div>
         <label>Team Leader Email Address*</label>
