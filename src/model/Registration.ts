@@ -1,29 +1,22 @@
-import mongoose, { Schema, Document } from 'mongoose';
+// src/model/Registration.ts
 
-interface IRegistration extends Document {
-  teamName: string;
-  teamLeaderName: string;
-  teamLeaderPhoneNumber: string;
-  teamLeaderEmailAddress: string;
-  teamMembers: string[]; // Ensure this is an array of strings
-  projectDomain: string;
-  socialProjectLink: string;
-  socialProfiles: string[]; // Ensure this is an array of strings
-}
+import mongoose from 'mongoose';
 
-const RegistrationSchema: Schema = new Schema(
-  {
-    teamName: { type: String, required: true },
-    teamLeaderName: { type: String, required: true },
-    teamLeaderPhoneNumber: { type: String, required: true },
-    teamLeaderEmailAddress: { type: String, required: true },
-    teamMembers: { type: [String], required: true }, // Array of strings
-    projectDomain: { type: String },
-    socialProjectLink: { type: String },
-    socialProfiles: { type: [String], required: true }, // Array of strings
-  },
-  { timestamps: true }
-);
+const RegistrationSchema = new mongoose.Schema({
+  teamName: { type: String, required: true },
+  teamLeaderName: { type: String, required: true },
+  teamLeaderPhone: { type: String, required: true },
+  teamLeaderEmail: { type: String, required: true },
+  teamMembers: [
+    {
+      name: { type: String, required: true },
+      socialMediaLink: { type: String, required: false }, // Optional field
+    },
+  ],
+  projectDomain: { type: String, required: false },
+  projectLink: { type: String, required: false },
+});
 
-export default mongoose.models.Registration ||
-  mongoose.model<IRegistration>('Registration', RegistrationSchema);
+const Registration = mongoose.models.Registration || mongoose.model('Registration', RegistrationSchema);
+
+export default Registration;

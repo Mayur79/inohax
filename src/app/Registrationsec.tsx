@@ -1,114 +1,113 @@
 'use client';
-import { useState, ChangeEvent, FormEvent } from 'react';
-import axios from 'axios';
+import React, { useState } from 'react';
+import { useForm, Controller } from 'react-hook-form';
 
-interface IFormData {
-  teamName: string;
-  teamLeaderName: string;
-  teamLeaderPhoneNumber: string;
-  teamLeaderEmailAddress: string;
-  teamMembers: string[]; // This should be an array of strings
-  projectDomain?: string;
-  socialProjectLink?: string;
-  socialProfiles: string[]; // This should be an array of strings
-}
+const Registration: React.FC = () => {
+  const { handleSubmit, control, register } = useForm();
+  const [teamMembers, setTeamMembers] = useState([{ name: '', socialMediaLink: '' }]);
 
-export default function Registration() {
-  const [formData, setFormData] = useState<IFormData>({
-    teamName: '',
-    teamLeaderName: '',
-    teamLeaderPhoneNumber: '',
-    teamLeaderEmailAddress: '',
-    teamMembers: ['', '', '', '', ''], // Initializing as an array of 5 empty strings
-    projectDomain: '',
-    socialProjectLink: '',
-    socialProfiles: ['', '', '', '', ''], // Initializing as an array of 5 empty strings
-  });
-
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+  const addTeamMember = () => {
+    setTeamMembers([...teamMembers, { name: '', socialMediaLink: '' }]);
   };
 
-  const handleArrayChange = (index: number, e: ChangeEvent<HTMLInputElement>, field: keyof IFormData) => {
-    const updatedArray = [...(formData[field] || [])]; // Ensure field is treated as an array
-    updatedArray[index] = e.target.value;
-    setFormData({ ...formData, [field]: updatedArray });
+  // Handle input changes for team members
+  const handleTeamMemberChange = (index: number, field: string, value: string) => {
+    const updatedMembers = [...teamMembers];
+    updatedMembers[index][field] = value;
+    setTeamMembers(updatedMembers);
   };
 
-  const handleSubmit = async (e: FormEvent) => {
-    e.preventDefault();
-    try {
-      const response = await axios.post('/api/registration', formData);
-      alert(response.data.message);
-    } catch (error) {
-      alert('Error submitting form');
+  const onSubmit = async (data: any) => {
+    const payload = {
+      ...data,
+      teamMembers,
+    };
+
+    const response = await fetch('/api/registration', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(payload),
+    });
+
+    if (response.ok) {
+      alert('Registration successful!');
+    } else {
+      alert('Registration failed!');
     }
   };
 
   return (
-    <div>
-      <h1>Inohax 1.0 Registration Form</h1>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>Team Name*:</label>
-          <input type="text" name="teamName" value={formData.teamName} onChange={handleChange} required />
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <div>
+        <label>Team Name*</label>
+        <input {...register('teamName', { required: true })} />
+      </div>
+      <div>
+        <label>Team Leader Name*</label>
+        <input {...register('teamLeaderName', { required: true })} />
+      </div>
+      <div>
+        <label>Team Leader Phone Number*</label>
+        <input {...register('teamLeaderPhone', { required: true })} />
+      </div>
+      <div>
+        <label>Team Leader Email Address*</label>
+        <input {...register('teamLeaderEmail', { required: true })} />
+      </div>
+
+      <h3>Team Members:</h3>
+      {teamMembers.map((member, index) => (
+        <div key={index}>
+          <label>Team Member {index + 1} Name*</label>
+          <Controller
+            name={`teamMembers[${index}].name`}
+            control={control}
+            defaultValue={member.name}
+            render={({ field }) => (
+              <input
+                {...field}
+                required
+                onChange={(e) => {
+                  handleTeamMemberChange(index, 'name', e.target.value);
+                  field.onChange(e); // Call the field's onChange to update react-hook-form state
+                }}
+              />
+            )}
+          />
+
+          <label>Team Member {index + 1} Social Media Link</label>
+          <Controller
+            name={`teamMembers[${index}].socialMediaLink`}
+            control={control}
+            defaultValue={member.socialMediaLink}
+            render={({ field }) => (
+              <input
+                {...field}
+                onChange={(e) => {
+                  handleTeamMemberChange(index, 'socialMediaLink', e.target.value);
+                  field.onChange(e); // Call the field's onChange to update react-hook-form state
+                }}
+              />
+            )}
+          />
         </div>
+      ))}
+      <button type="button" onClick={addTeamMember}>Add Team Member</button>
 
-        <div>
-          <label>Team Leader Name*:</label>
-          <input type="text" name="teamLeaderName" value={formData.teamLeaderName} onChange={handleChange} required />
-        </div>
+      <div>
+        <label>Project Domain</label>
+        <input {...register('projectDomain')} />
+      </div>
+      <div>
+        <label>Project Link</label>
+        <input {...register('projectLink')} />
+      </div>
 
-        <div>
-          <label>Team Leader Phone Number*:</label>
-          <input type="text" name="teamLeaderPhoneNumber" value={formData.teamLeaderPhoneNumber} onChange={handleChange} required />
-        </div>
-
-        <div>
-          <label>Team Leader Email Address*:</label>
-          <input type="email" name="teamLeaderEmailAddress" value={formData.teamLeaderEmailAddress} onChange={handleChange} required />
-        </div>
-
-        <h3>Team Members:</h3>
-        {[...Array(5)].map((_, index) => (
-          <div key={index}>
-            <label>{`Team Member ${index + 1} Name${index < 3 ? '*' : ''}:`}</label>
-            <input
-              type="text"
-              value={formData.teamMembers[index]}
-              onChange={(e) => handleArrayChange(index, e, 'teamMembers')}
-              required={index < 3}
-            />
-          </div>
-        ))}
-
-        <h3>Project Information:</h3>
-        <div>
-          <label>Project Domain:</label>
-          <input type="text" name="projectDomain" value={formData.projectDomain} onChange={handleChange} />
-        </div>
-
-        <div>
-          <label>Inovact Social Project/Idea Link:</label>
-          <input type="text" name="socialProjectLink" value={formData.socialProjectLink} onChange={handleChange} />
-        </div>
-
-        <h3>Inovact Social Profiles for Team Members:</h3>
-        {[...Array(5)].map((_, index) => (
-          <div key={index}>
-            <label>{`Team Member ${index + 1} Inovact Social Link${index < 3 ? '*' : ''}:`}</label>
-            <input
-              type="text"
-              value={formData.socialProfiles[index]}
-              onChange={(e) => handleArrayChange(index, e, 'socialProfiles')}
-              required={index < 3}
-            />
-          </div>
-        ))}
-
-        <button type="submit">Submit</button>
-      </form>
-    </div>
+      <button type="submit">Submit</button>
+    </form>
   );
-}
+};
+
+export default Registration;
