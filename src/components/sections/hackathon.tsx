@@ -42,8 +42,6 @@ export default function Component() {
             key={index}
             event={event}
             index={index}
-            isExpanded={expandedIndex === index}
-            onToggle={() => setExpandedIndex(expandedIndex === index ? null : index)}
           />
         ))}
       </div>
@@ -60,11 +58,9 @@ interface TimelineEventProps {
     color: string
   }
   index: number
-  isExpanded: boolean
-  onToggle: () => void
 }
 
-function TimelineEvent({ event, index, isExpanded, onToggle }: TimelineEventProps) {
+function TimelineEvent({ event, index }: TimelineEventProps) {
   const eventRef = useRef<HTMLDivElement>(null)
   const isInView = useInView(eventRef, { once: true, amount: 0.2 })
 
@@ -85,24 +81,12 @@ function TimelineEvent({ event, index, isExpanded, onToggle }: TimelineEventProp
       </motion.div>
       <div className="ml-8 flex-1">
         <motion.div
-          className="bg-black rounded-2xl p-6 shadow-xl border border-gray-700 hover:border-purple-500 transition-all duration-300 cursor-pointer"
-          whileHover={{ scale: 1.03, boxShadow: "0 8px 30px rgba(139, 92, 246, 0.1)" }}
-          onClick={onToggle}
+          className="bg-black rounded-2xl p-6 shadow-xl border border-gray-700 transition-all duration-300 cursor-pointer"
         >
           <div className="flex justify-between items-center mb-3">
             <h2 className={`text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r ${event.color}`}>
               {event.title}
             </h2>
-            <motion.div
-              whileHover={{ scale: 1.2 }}
-              transition={{ duration: 0.2 }}
-            >
-              {isExpanded ? (
-                <ChevronUp className="w-6 h-6 text-purple-400" />
-              ) : (
-                <ChevronDown className="w-6 h-6 text-purple-400" />
-              )}
-            </motion.div>
           </div>
           <div className="flex items-center text-sm text-gray-400 mb-2">
             <Calendar className="w-4 h-4 mr-2 text-purple-400" />
@@ -114,30 +98,6 @@ function TimelineEvent({ event, index, isExpanded, onToggle }: TimelineEventProp
               </>
             )}
           </div>
-          <AnimatePresence>
-            {isExpanded && (
-              <motion.div
-                initial={{ opacity: 0, height: 0 }}
-                animate={{ opacity: 1, height: "auto" }}
-                exit={{ opacity: 0, height: 0 }}
-                transition={{ duration: 0.3 }}
-              >
-                <motion.div
-                  className="mt-4 text-gray-300 bg-black p-4 rounded-xl"
-                  initial={{ y: 20, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  transition={{ duration: 0.3, delay: 0.1 }}
-                >
-                  <p className="mb-2">
-                    Get ready for an exciting phase of our hackathon! This event marks a crucial milestone in our journey towards innovation and creativity.
-                  </p>
-                  <p>
-                    Prepare yourself for intense coding, brainstorming, and collaboration. Don&apos;t forget to leverage the resources and mentorship available to make the most of this opportunity!
-                  </p>
-                </motion.div>
-              </motion.div>
-            )}
-          </AnimatePresence>
         </motion.div>
       </div>
     </motion.div>
