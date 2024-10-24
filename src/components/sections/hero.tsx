@@ -3,7 +3,7 @@ import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 import { Navbar } from "@/components/sections/navbar";
 import Countdown from "./countdown";
-
+import PartnersLogo from "./partnerslogo";
 export default function Hero() {
     return (
         <div className="relative">
@@ -36,6 +36,7 @@ export default function Hero() {
                         </div>
                     </div>
                     <Countdown />
+                    <PartnersLogo />
                 </div>
             </section>
         </div>
