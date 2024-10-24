@@ -7,7 +7,7 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { ChevronRightIcon, PlusIcon, XIcon, UserIcon, LinkIcon, Users2Icon, PhoneIcon, MailIcon, FolderIcon } from 'lucide-react'
+import { ChevronRight, Plus, X, User, Link, Users2, Phone, Mail, Folder } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 
 interface TeamMember {
@@ -15,8 +15,18 @@ interface TeamMember {
   socialMediaLink: string;
 }
 
-export default function EnhancedRegistrationForm() {
-  const { handleSubmit, control, register } = useForm();
+interface FormData {
+  teamName: string;
+  teamLeaderName: string;
+  teamLeaderPhone: string;
+  teamLeaderEmail: string;
+  projectDomain: string;
+  projectLink: string;
+  teamMembers: TeamMember[];
+}
+
+export default function Component() {
+  const { handleSubmit, control, register } = useForm<FormData>();
   const [teamMembers, setTeamMembers] = useState<TeamMember[]>([
     { name: '', socialMediaLink: '' },
     { name: '', socialMediaLink: '' },
@@ -40,7 +50,7 @@ export default function EnhancedRegistrationForm() {
     setTeamMembers(updatedMembers);
   }
 
-  const onSubmit = async (data: any) => {
+  const onSubmit = async (data: FormData) => {
     const payload = {
       ...data,
       teamMembers,
@@ -75,13 +85,12 @@ export default function EnhancedRegistrationForm() {
               Inohax 1.0 Registration
             </span>
           </h1>
-          
         </div>
         
         <Card className="backdrop-blur-lg bg-black/30 border border-gray-700 shadow-2xl shadow-gray-500/20">
           <CardHeader>
             <CardTitle className="text-2xl font-bold text-center text-gray-300">Team Registration</CardTitle>
-            <CardDescription className="text-center text-gray-400">Enter your team's details below</CardDescription>
+            <CardDescription className="text-center text-gray-400">Enter your team&apos;s details below</CardDescription>
           </CardHeader>
           <CardContent>
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-8">
@@ -90,7 +99,7 @@ export default function EnhancedRegistrationForm() {
                   <div className="space-y-2">
                     <Label htmlFor="teamName" className="text-gray-300">Team Name *</Label>
                     <div className="relative">
-                      <Users2Icon className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500 h-5 w-5" />
+                      <Users2 className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500 h-5 w-5" />
                       <Input 
                         id="teamName" 
                         {...register('teamName', { required: true })}
@@ -102,7 +111,7 @@ export default function EnhancedRegistrationForm() {
                   <div className="space-y-2">
                     <Label htmlFor="teamLeaderName" className="text-gray-300">Team Leader Name *</Label>
                     <div className="relative">
-                      <UserIcon className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500 h-5 w-5" />
+                      <User className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500 h-5 w-5" />
                       <Input 
                         id="teamLeaderName" 
                         {...register('teamLeaderName', { required: true })}
@@ -114,7 +123,7 @@ export default function EnhancedRegistrationForm() {
                   <div className="space-y-2">
                     <Label htmlFor="teamLeaderPhone" className="text-gray-300">Team Leader Phone *</Label>
                     <div className="relative">
-                      <PhoneIcon className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500 h-5 w-5" />
+                      <Phone className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500 h-5 w-5" />
                       <Input 
                         id="teamLeaderPhone" 
                         {...register('teamLeaderPhone', { required: true })}
@@ -127,7 +136,7 @@ export default function EnhancedRegistrationForm() {
                   <div className="space-y-2">
                     <Label htmlFor="teamLeaderEmail" className="text-gray-300">Team Leader Email *</Label>
                     <div className="relative">
-                      <MailIcon className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500 h-5 w-5" />
+                      <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500 h-5 w-5" />
                       <Input 
                         id="teamLeaderEmail" 
                         {...register('teamLeaderEmail', { required: true })}
@@ -161,7 +170,7 @@ export default function EnhancedRegistrationForm() {
                               size="icon"
                               className="text-red-500 hover:text-red-400 hover:bg-red-500/20"
                             >
-                              <XIcon className="h-5 w-5" />
+                              <X className="h-5 w-5" />
                             </Button>
                           )}
                         </div>
@@ -171,9 +180,9 @@ export default function EnhancedRegistrationForm() {
                               Name {index < 3 ? '*' : ''}
                             </Label>
                             <div className="relative">
-                              <UserIcon className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500 h-5 w-5" />
+                              <User className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500 h-5 w-5" />
                               <Controller
-                                name={`teamMembers[${index}].name`}
+                                name={`teamMembers.${index}.name` as const}
                                 control={control}
                                 defaultValue={member.name}
                                 rules={{ required: index < 3 }}
@@ -197,9 +206,9 @@ export default function EnhancedRegistrationForm() {
                               Social Media Link {index < 3 ? '*' : ''}
                             </Label>
                             <div className="relative">
-                              <LinkIcon className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500 h-5 w-5" />
+                              <Link className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500 h-5 w-5" />
                               <Controller
-                                name={`teamMembers[${index}].socialMediaLink`}
+                                name={`teamMembers.${index}.socialMediaLink` as const}
                                 control={control}
                                 defaultValue={member.socialMediaLink}
                                 rules={{ required: index < 3 }}
@@ -227,7 +236,7 @@ export default function EnhancedRegistrationForm() {
                     onClick={addTeamMember}
                     className="w-full bg-gray-700 hover:bg-gray-600 text-white transition-all duration-300 ease-in-out transform hover:scale-105"
                   >
-                    <PlusIcon className="h-5 w-5 mr-2" />
+                    <Plus className="h-5 w-5 mr-2" />
                     Add Team Member
                   </Button>
                 </div>
@@ -257,7 +266,7 @@ export default function EnhancedRegistrationForm() {
                   <div className="space-y-2">
                     <Label htmlFor="projectLink" className="text-gray-300">Project Link *</Label>
                     <div className="relative">
-                      <FolderIcon className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500 h-5 w-5" />
+                      <Folder className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500 h-5 w-5" />
                       <Input 
                         id="projectLink" 
                         {...register('projectLink', { required: true })}
@@ -272,7 +281,7 @@ export default function EnhancedRegistrationForm() {
 
               <Button type="submit" className="w-full bg-gradient-to-r from-gray-700 to-gray-900 hover:from-gray-800 hover:to-black text-white font-bold py-3 rounded-lg transition duration-300 ease-in-out transform hover:scale-105">
                 Submit Registration
-                <ChevronRightIcon className="ml-2 h-5 w-5" />
+                <ChevronRight className="ml-2 h-5 w-5" />
               </Button>
             </form>
           </CardContent>

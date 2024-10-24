@@ -2,7 +2,7 @@
 
 import React, { useState, useRef, useEffect } from 'react'
 import { motion, AnimatePresence, useInView } from 'framer-motion'
-import { ChevronDown, ChevronUp, Calendar, Clock, Star } from 'lucide-react'
+import { ChevronDown, ChevronUp, Calendar, Clock } from 'lucide-react'
 
 const events = [
   { date: "26th October 2024", time: "", title: "Applications Open", icon: "🚀", color: "from-purple-400 to-indigo-400" },
@@ -14,7 +14,7 @@ const events = [
   { date: "10th Nov", time: "2:45 PM", title: "Winner Announcement", icon: "🏆", color: "from-purple-400 to-indigo-400" },
 ]
 
-export default function Hackathon() {
+export default function Component() {
   const [expandedIndex, setExpandedIndex] = useState<number | null>(null)
   const timelineRef = useRef<HTMLDivElement>(null)
   const isInView = useInView(timelineRef, { once: true, amount: 0.2 })
@@ -46,7 +46,6 @@ export default function Hackathon() {
             onToggle={() => setExpandedIndex(expandedIndex === index ? null : index)}
           />
         ))}
-     
       </div>
     </div>
   )
@@ -86,7 +85,7 @@ function TimelineEvent({ event, index, isExpanded, onToggle }: TimelineEventProp
       </motion.div>
       <div className="ml-8 flex-1">
         <motion.div
-          className={`bg-gray-900 rounded-2xl p-6 shadow-xl border border-gray-800 hover:border-purple-500 transition-all duration-300 cursor-pointer`}
+          className="bg-gray-900 rounded-2xl p-6 shadow-xl border border-gray-800 hover:border-purple-500 transition-all duration-300 cursor-pointer"
           whileHover={{ scale: 1.03, boxShadow: "0 8px 30px rgba(139, 92, 246, 0.1)" }}
           onClick={onToggle}
         >
@@ -133,7 +132,7 @@ function TimelineEvent({ event, index, isExpanded, onToggle }: TimelineEventProp
                     Get ready for an exciting phase of our hackathon! This event marks a crucial milestone in our journey towards innovation and creativity.
                   </p>
                   <p>
-                    Prepare yourself for intense coding, brainstorming, and collaboration. Don't forget to leverage the resources and mentorship available to make the most of this opportunity!
+                    Prepare yourself for intense coding, brainstorming, and collaboration. Don&apos;t forget to leverage the resources and mentorship available to make the most of this opportunity!
                   </p>
                 </motion.div>
               </motion.div>

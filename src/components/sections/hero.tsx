@@ -1,31 +1,25 @@
 import React from "react";
-import RetroGrid from "../ui/grid";
 import { ArrowUpRight } from "lucide-react";
-import Benefits from "./benefits";
 import Link from "next/link";
-import { Navbar } from "@/components/sections/navbar"; // Import Navbar
+import { Navbar } from "@/components/sections/navbar";
 import Countdown from "./countdown";
 
 export default function Hero() {
     return (
-        <div className="relative ">
-            <div className="sticky top-6 z-[1] ">
+        <div className="relative">
+            <div className="sticky top-6 z-[1]">
                 <Navbar />
             </div>
-            <div className="absolute top-0 z-[0] h-screen w-screen bg-purple-950/10 bg-[radial-gradient(ellipse_20%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(0,0,0,0))]"></div>
+            <div className="absolute top-0 z-[0] h-screen w-screen bg-purple-950/10 bg-[radial-gradient(ellipse_20%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(0,0,0,0))]" />
             <section className="relative max-w-full mx-auto z-1">
-                {/* <RetroGrid /> */}
-
                 <div className="max-w-screen-xl z-10 mx-auto px-4 py-28 gap-12 text-gray-300 md:px-8">
                     <div className="space-y-5 max-w-3xl leading-0 lg:leading-5 mx-auto text-center">
-
                         <h2 className="text-sm tracking-tighter font-geist bg-clip-text bg-[linear-gradient(180deg,_#FFF_0%,_rgba(255,_255,_255,_0.00)_202.08%)] text-transparent mx-auto md:text-6xl">
-                            A 24 hours Online Open Innovation Hackathon for {" "}
+                            A 24 hours Online Open Innovation Hackathon for{" "}
                             <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-300 to-orange-200">
                                 Students & Entrepreneurs
                             </span>
                         </h2>
-
                         <p className="max-w-2xl mx-auto text-gray-400">
                             Compete in Inohax 1.0 and stand a chance to win a cash prize of INR 10,000!
                         </p>
@@ -41,9 +35,7 @@ export default function Hero() {
                             </Link>
                         </div>
                     </div>
-                   
-                       <Countdown/>
-                   
+                    <Countdown />
                 </div>
             </section>
         </div>
