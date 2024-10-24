@@ -23,6 +23,13 @@ function Footer() {
 					Join Inovact Community
 					<LinkArrow classname="group-hover/community:opacity-100 opacity-0 transition hidden md:block" />
 				</a>
+				<a href="/registration"
+					className="group/community flex items-center"
+					target="_blank"
+				>
+					Register Now
+					<LinkArrow classname="group-hover/community:opacity-100 opacity-0 transition hidden md:block" />
+			</a>
 			</div>
 			<p className="mt-2 text-xs text-zinc-400">
 				For any queries, feel free to contact Shubham at <a href="https://wa.me/919818273220" target="_blank" rel="noopener noreferrer" className="text-blue-500">Contact - +91 98182 73220</a>
