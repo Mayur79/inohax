@@ -8,7 +8,7 @@ export async function POST(req: Request) {
   await dbConnect();
 
   try {
-    const body = await req.json();
+    const body: { teamName: string; teamLeaderName: string; teamLeaderPhone: string; teamLeaderEmail: string; teamMembers: Array<{ name: string; socialMediaLink?: string }>; projectDomain?: string; projectLink?: string; } = await req.json();
     console.log("Team ", body);
 
     const team = await Registration.create(body);

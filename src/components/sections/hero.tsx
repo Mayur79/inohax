@@ -1,7 +1,5 @@
 import React from "react";
-import RetroGrid from "../ui/grid";
 import { ArrowUpRight } from "lucide-react";
-import Benefits from "./benefits";
 import Link from "next/link";
 import { Navbar } from "@/components/sections/navbar"; // Import Navbar
 import Countdown from "./countdown";
@@ -41,9 +39,9 @@ export default function Hero() {
                             </Link>
                         </div>
                     </div>
-                   
+
                        <Countdown/>
-                   
+
                 </div>
             </section>
         </div>

@@ -1,5 +1,5 @@
 "use client";
-import { ChevronsDown, Github, Menu } from "lucide-react";
+import { ChevronsDown, Github } from "lucide-react";
 import React from "react";
 import {
     Sheet,
@@ -11,12 +11,7 @@ import {
     SheetTrigger,
 } from "../ui/sheet";
 import { Separator } from "../ui/separator";
-import {
-    NavigationMenu,
-    NavigationMenuItem,
-    NavigationMenuLink,
-    NavigationMenuList,
-} from "../ui/navigation-menu";
+import { NavigationMenu, NavigationMenuItem, NavigationMenuLink, NavigationMenuList } from "../ui/navigation-menu";
 import { Button } from "../ui/button";
 import Link from "next/link";
 

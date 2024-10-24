@@ -40,7 +40,7 @@ export default function EnhancedRegistrationForm() {
     setTeamMembers(updatedMembers);
   }
 
-  const onSubmit = async (data: any) => {
+  const onSubmit = async (data: { teamName: string; teamLeaderName: string; teamLeaderPhone: string; teamLeaderEmail: string; teamMembers: TeamMember[]; projectDomain?: string; projectLink?: string; }) => {
     const payload = {
       ...data,
       teamMembers,
@@ -75,9 +75,9 @@ export default function EnhancedRegistrationForm() {
               Inohax 1.0 Registration
             </span>
           </h1>
-          
+
         </div>
-        
+
         <Card className="backdrop-blur-lg bg-black/30 border border-gray-700 shadow-2xl shadow-gray-500/20">
           <CardHeader>
             <CardTitle className="text-2xl font-bold text-center text-gray-300">Team Registration</CardTitle>
@@ -91,10 +91,10 @@ export default function EnhancedRegistrationForm() {
                     <Label htmlFor="teamName" className="text-gray-300">Team Name *</Label>
                     <div className="relative">
                       <Users2Icon className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500 h-5 w-5" />
-                      <Input 
-                        id="teamName" 
+                      <Input
+                        id="teamName"
                         {...register('teamName', { required: true })}
-                        className="bg-gray-900/30 border-gray-700 text-white placeholder-gray-500 pl-10" 
+                        className="bg-gray-900/30 border-gray-700 text-white placeholder-gray-500 pl-10"
                         placeholder="Enter team name"
                       />
                     </div>
@@ -103,10 +103,10 @@ export default function EnhancedRegistrationForm() {
                     <Label htmlFor="teamLeaderName" className="text-gray-300">Team Leader Name *</Label>
                     <div className="relative">
                       <UserIcon className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500 h-5 w-5" />
-                      <Input 
-                        id="teamLeaderName" 
+                      <Input
+                        id="teamLeaderName"
                         {...register('teamLeaderName', { required: true })}
-                        className="bg-gray-900/30 border-gray-700 text-white placeholder-gray-500 pl-10" 
+                        className="bg-gray-900/30 border-gray-700 text-white placeholder-gray-500 pl-10"
                         placeholder="Enter leader name"
                       />
                     </div>
@@ -115,11 +115,11 @@ export default function EnhancedRegistrationForm() {
                     <Label htmlFor="teamLeaderPhone" className="text-gray-300">Team Leader Phone *</Label>
                     <div className="relative">
                       <PhoneIcon className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500 h-5 w-5" />
-                      <Input 
-                        id="teamLeaderPhone" 
+                      <Input
+                        id="teamLeaderPhone"
                         {...register('teamLeaderPhone', { required: true })}
-                        type="tel" 
-                        className="bg-gray-900/30 border-gray-700 text-white placeholder-gray-500 pl-10" 
+                        type="tel"
+                        className="bg-gray-900/30 border-gray-700 text-white placeholder-gray-500 pl-10"
                         placeholder="Enter phone number"
                       />
                     </div>
@@ -128,17 +128,17 @@ export default function EnhancedRegistrationForm() {
                     <Label htmlFor="teamLeaderEmail" className="text-gray-300">Team Leader Email *</Label>
                     <div className="relative">
                       <MailIcon className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500 h-5 w-5" />
-                      <Input 
-                        id="teamLeaderEmail" 
+                      <Input
+                        id="teamLeaderEmail"
                         {...register('teamLeaderEmail', { required: true })}
-                        type="email" 
-                        className="bg-gray-900/30 border-gray-700 text-white placeholder-gray-500 pl-10" 
+                        type="email"
+                        className="bg-gray-900/30 border-gray-700 text-white placeholder-gray-500 pl-10"
                         placeholder="Enter email address"
                       />
                     </div>
                   </div>
                 </div>
-                
+
                 <div className="space-y-4">
                   <h3 className="text-xl font-semibold text-gray-300">Team Members</h3>
                   <AnimatePresence>
@@ -154,7 +154,7 @@ export default function EnhancedRegistrationForm() {
                         <div className="flex items-center justify-between mb-2">
                           <h4 className="text-lg font-medium text-gray-300">Team Member {index + 1}</h4>
                           {index >= 3 && (
-                            <Button 
+                            <Button
                               type="button"
                               onClick={() => removeTeamMember(index)}
                               variant="ghost"
@@ -178,7 +178,7 @@ export default function EnhancedRegistrationForm() {
                                 defaultValue={member.name}
                                 rules={{ required: index < 3 }}
                                 render={({ field }) => (
-                                  <Input 
+                                  <Input
                                     {...field}
                                     id={`memberName${index}`}
                                     onChange={(e) => {
@@ -204,7 +204,7 @@ export default function EnhancedRegistrationForm() {
                                 defaultValue={member.socialMediaLink}
                                 rules={{ required: index < 3 }}
                                 render={({ field }) => (
-                                  <Input 
+                                  <Input
                                     {...field}
                                     id={`memberLink${index}`}
                                     onChange={(e) => {
@@ -222,7 +222,7 @@ export default function EnhancedRegistrationForm() {
                       </motion.div>
                     ))}
                   </AnimatePresence>
-                  <Button 
+                  <Button
                     type="button"
                     onClick={addTeamMember}
                     className="w-full bg-gray-700 hover:bg-gray-600 text-white transition-all duration-300 ease-in-out transform hover:scale-105"
@@ -231,7 +231,7 @@ export default function EnhancedRegistrationForm() {
                     Add Team Member
                   </Button>
                 </div>
-                
+
                 <div className="space-y-4">
                   <h3 className="text-xl font-semibold text-gray-300">Project Details</h3>
                   <div className="space-y-2">
@@ -258,10 +258,10 @@ export default function EnhancedRegistrationForm() {
                     <Label htmlFor="projectLink" className="text-gray-300">Project Link *</Label>
                     <div className="relative">
                       <FolderIcon className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500 h-5 w-5" />
-                      <Input 
-                        id="projectLink" 
+                      <Input
+                        id="projectLink"
                         {...register('projectLink', { required: true })}
-                        className="bg-gray-900/30 border-gray-700 text-white placeholder-gray-500 pl-10" 
+                        className="bg-gray-900/30 border-gray-700 text-white placeholder-gray-500 pl-10"
                         placeholder="Enter project link"
                       />
                     </div>

@@ -27,7 +27,7 @@ export default function Hackathon() {
 
   return (
     <div className="min-h-screen bg-black text-gray-100 p-8 flex flex-col items-center overflow-hidden">
-      <motion.h1 
+      <motion.h1
         className="text-5xl font-bold mb-16 bg-clip-text text-transparent bg-gradient-to-r from-purple-400 via-pink-500 to-red-500"
         initial={{ opacity: 0, y: -50 }}
         animate={{ opacity: 1, y: 0 }}
@@ -38,15 +38,15 @@ export default function Hackathon() {
       <div className="w-full max-w-3xl relative" ref={timelineRef}>
         <div className="absolute top-0 bottom-0 left-8 w-1 bg-gradient-to-b from-purple-500 via-pink-500 to-transparent rounded-full" />
         {events.map((event, index) => (
-          <TimelineEvent 
-            key={index} 
-            event={event} 
-            index={index} 
+          <TimelineEvent
+            key={index}
+            event={event}
+            index={index}
             isExpanded={expandedIndex === index}
             onToggle={() => setExpandedIndex(expandedIndex === index ? null : index)}
           />
         ))}
-     
+
       </div>
     </div>
   )
@@ -77,7 +77,7 @@ function TimelineEvent({ event, index, isExpanded, onToggle }: TimelineEventProp
       animate={isInView ? { opacity: 1, x: 0 } : {}}
       transition={{ delay: index * 0.1, duration: 0.5 }}
     >
-      <motion.div 
+      <motion.div
         className="w-16 h-16 rounded-full bg-gray-900 flex items-center justify-center z-10 shadow-lg border border-gray-800"
         whileHover={{ scale: 1.1, rotate: 360 }}
         transition={{ duration: 0.3 }}
@@ -123,7 +123,7 @@ function TimelineEvent({ event, index, isExpanded, onToggle }: TimelineEventProp
                 exit={{ opacity: 0, height: 0 }}
                 transition={{ duration: 0.3 }}
               >
-                <motion.div 
+                <motion.div
                   className="mt-4 text-gray-300 bg-gray-800 p-4 rounded-xl"
                   initial={{ y: 20, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
@@ -133,7 +133,7 @@ function TimelineEvent({ event, index, isExpanded, onToggle }: TimelineEventProp
                     Get ready for an exciting phase of our hackathon! This event marks a crucial milestone in our journey towards innovation and creativity.
                   </p>
                   <p>
-                    Prepare yourself for intense coding, brainstorming, and collaboration. Don't forget to leverage the resources and mentorship available to make the most of this opportunity!
+                    Prepare yourself for intense coding, brainstorming, and collaboration. Don&apos;t forget to leverage the resources and mentorship available to make the most of this opportunity!
                   </p>
                 </motion.div>
               </motion.div>
