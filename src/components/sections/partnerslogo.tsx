@@ -41,11 +41,11 @@ const logos = [
 
   const PartnersLogo = () => {
     return (
-        <div className="w-full mt-6">
+        <div className="w-full px-6">
         <h3 className="text-gray-200 mb-8 text-3xl font-semibold sm:text-4xl font-geist tracking-tighter text-center">
             Community Partners
         </h3>
-        <div className="mx-auto w-full px-4 md:px-8">
+        <div className="mx-auto w-full mt-12">
           <div
             className="group relative flex gap-6 overflow-hidden"
             style={{

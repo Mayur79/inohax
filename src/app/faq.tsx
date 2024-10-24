@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { ChevronDown, ChevronUp } from 'lucide-react'
+import { motion } from 'framer-motion'
 
 const faqs = [
   {
@@ -72,7 +73,7 @@ export default function FAQComponent() {
         {faqs.map((faq, index) => (
           <div key={index} className="border-b border-gray-700 pb-4">
             <button
-              className="flex justify-between items-center w-full text-left focus:outline-none focus:ring-2 focus:ring-gray-500 rounded-lg"
+              className="flex justify-between items-center w-full text-left focus:outline-none rounded-lg"
               onClick={() => toggleItem(index)}
               aria-expanded={openItems.includes(index)}
               aria-controls={`faq-answer-${index}`}
@@ -84,14 +85,19 @@ export default function FAQComponent() {
                 <ChevronDown className="w-5 h-5 text-gray-400" />
               )}
             </button>
-            {openItems.includes(index) && (
-              <p 
-                id={`faq-answer-${index}`} 
+            <motion.div
+              initial={false}
+              animate={{ height: openItems.includes(index) ? 'auto' : 0 }}
+              transition={{ duration: 0.3, ease: 'easeInOut' }}
+              style={{ overflow: 'hidden' }}
+            >
+              <p
+                id={`faq-answer-${index}`}
                 className="mt-2 text-gray-300"
               >
                 {faq.answer}
               </p>
-            )}
+            </motion.div>
           </div>
         ))}
       </div>

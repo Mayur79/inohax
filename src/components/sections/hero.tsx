@@ -41,7 +41,7 @@ export default function Hero() {
           <div className="mt-8 sm:mt-12">
             <Countdown />
           </div>
-          <div className="mt-8 sm:mt-12">
+          <div className="">
             <PartnersLogo />
           </div>
         </div>
