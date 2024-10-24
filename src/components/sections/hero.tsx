@@ -23,9 +23,11 @@ export default function Hero() {
                 Students & Entrepreneurs
               </span>
             </h2>
-            <p className="max-w-2xl mx-auto text-sm sm:text-base text-gray-400">
+            <p className="max-w-2xl mx-auto text-lg sm:text-xl text-gray-400">
               Compete in Inohax 1.0 and stand a chance to win a cash prize of INR 10,000!
             </p>
+
+            <h2 className="text-gray-50 text-2xl sm:text-3xl bg-gradient-to-b from-[#7877c64d]/40 to-black/70 p-4 w-fit mx-auto rounded-md "><b>A Flagship Hackathon by Inovact Social</b></h2>
             <div className="flex justify-center items-center">
               <Link href="/registration">
                 <h1 className="text-base sm:text-lg text-gray-400 group font-geist mx-auto px-4 sm:px-6 py-2 sm:py-3 bg-gradient-to-tr from-zinc-300/5 via-gray-400/5 to-transparent border-[2px] border-white/5 rounded-full flex items-center justify-center w-fit">
