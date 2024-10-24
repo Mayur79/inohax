@@ -15,6 +15,7 @@ const RegistrationSchema = new mongoose.Schema({
   ],
   projectDomain: { type: String, required: false },
   projectLink: { type: String, required: false },
+  communityReferral: { type: String, required: false },
 });
 
 const Registration = mongoose.models.Registration || mongoose.model('Registration', RegistrationSchema);

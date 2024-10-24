@@ -9,6 +9,8 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { ChevronRight, Plus, X, User, Link, Users2, Phone, Mail, Folder } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 // import Link from 'next/link'
 
 interface TeamMember {
@@ -24,6 +26,7 @@ interface FormData {
     projectDomain: string;
     projectLink: string;
     teamMembers: TeamMember[];
+    communityReferral:string;
 }
 
 export default function Component() {
@@ -35,7 +38,13 @@ export default function Component() {
     ]);
 
     const addTeamMember = () => {
-        setTeamMembers([...teamMembers, { name: '', socialMediaLink: '' }])
+        if (teamMembers.length >=5) {
+            toast.warn("Cannot add more than 5 member")
+        }
+        else {
+
+            setTeamMembers([...teamMembers, { name: '', socialMediaLink: '' }])
+        }
     }
 
     const removeTeamMember = (index: number) => {
@@ -149,8 +158,95 @@ export default function Component() {
                                     </div>
                                 </div>
 
+
                                 <div className="space-y-4">
+                                    <h3 className="text-xl font-semibold text-gray-300">Project Details</h3>
+                                    <div className="space-y-2">
+                                        <Label htmlFor="projectDomain" className="text-gray-300">Project Domain</Label>
+                                        <Controller
+                                            name="projectDomain"
+                                            control={control}
+                                            render={({ field }) => (
+                                                <Select onValueChange={field.onChange} defaultValue={field.value}>
+                                                    <SelectTrigger className="bg-gray-900/30 border-gray-700 text-white">
+                                                        <SelectValue placeholder="Select project domain" />
+                                                    </SelectTrigger>
+                                                    <SelectContent className="bg-gray-900 border-gray-700 text-white">
+                                                        <SelectItem value="edtech">EdTech</SelectItem>
+                                                        <SelectItem value="hrtech">HR Tech</SelectItem>
+                                                        <SelectItem value="web3">Web3</SelectItem>
+                                                      
+                                                        <SelectItem value="FinTech"> FinTech </SelectItem>
+                                                        <SelectItem value="HealthTech">HealthTech    </SelectItem>
+                                                        <SelectItem value="AgriTech"> AgriTech    </SelectItem>
+                                                        <SelectItem value="AI & Machine Learning">AI & Machine Learning    </SelectItem>
+                                                        <SelectItem value="ClimateTec"> ClimateTech    </SelectItem>
+                                                        <SelectItem value="Smart Cities">Smart Cities    </SelectItem>
+                                                        <SelectItem value="Cybersecurity"> Cybersecurity  </SelectItem>
+                                                        <SelectItem value="other">Other</SelectItem>
+                                                    </SelectContent>
+                                                </Select>
+                                            )}
+                                        />
+                                    </div>
+                                    <div className="space-y-2">
+                                        <Label htmlFor="projectLink" className="text-gray-300">Inovact Social Project/Idea Link
+                                            *</Label>
+                                        <p className="text-sm text-gray-400">Please upload basic details of your project/idea on Inovact Social and paste the post link here</p>
+
+                                        <div className="relative">
+                                            <Folder className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500 h-5 w-5" />
+                                            <Input
+                                                id="projectLink"
+                                                {...register('projectLink', { required: true })}
+                                                className="bg-gray-900/30 border-gray-700 text-white placeholder-gray-500 pl-10"
+                                                placeholder="Enter project/idea link"
+                                            />
+                                        </div>
+                                        <div className="flex space-x-4"> {/* Added space-x-4 for horizontal spacing */}
+                                            <a href="https://play.google.com/store/apps/details?id=in.pranaydas.inovact" target='_blank'>
+                                                <Button
+                                                    type="button"
+                                                    className="w-fit hover:bg-[#0d2c99]/60 bg-[#0d2c99] text-white"
+                                                >
+                                                    Download Inovact Social
+                                                </Button>
+                                            </a>
+                                            <a href="https://drive.google.com/file/d/1T_PpfjWKoUyOlJE5X3g9DTRUPL4xdB6o/view?usp=drivesdk" target='_blank'>
+                                                <Button
+                                                    type="button"
+                                                    className="w-fit hover:bg-[#0d2c99]/60 bg-[#0d2c99] text-white"
+                                                >
+                                                    Demo Video On Uploading Project/Idea On Inovact Social
+                                                </Button>
+                                            </a>
+                                        </div>
+                                          {/* New Community Referral Field */}
+                              
+                                    </div>
+                            
+                                </div>
+                                <div className="space-y-4">
+                                    <div className='flex flex-col md:flex-row justify-between'>
+
+                                  <div>
+
+                           
                                     <h3 className="text-xl font-semibold text-gray-300">Team Members</h3>
+                                    </div>
+                                    <div>
+
+                                   
+                                    <a href="https://drive.google.com/file/d/1Ahsj2IQ7F4m9xXnIyUo7T8JPDY8eVm0D/view?usp=drivesdk" target='_blank'>
+                                                <Button
+                                                    type="button"
+                                                    className="w-fit hover:bg-[#0d2c99]/60 bg-[#0d2c99] text-white"
+                                                >
+                                                  Demo Video for Sharing Profile Link on Inovact Social
+                                                </Button>
+                                            </a>
+                                            </div> 
+                                            </div>
                                     <AnimatePresence>
                                         {teamMembers.map((member, index) => (
                                             <motion.div
@@ -242,64 +338,19 @@ export default function Component() {
                                     </Button>
                                 </div>
 
-                                <div className="space-y-4">
-                                    <h3 className="text-xl font-semibold text-gray-300">Project Details</h3>
+                            </div>
+                            <div className="space-y-4">
+                                    <h3 className="text-xl font-semibold text-gray-300">Community Referral</h3>
                                     <div className="space-y-2">
-                                        <Label htmlFor="projectDomain" className="text-gray-300">Project Domain</Label>
-                                        <Controller
-                                            name="projectDomain"
-                                            control={control}
-                                            render={({ field }) => (
-                                                <Select onValueChange={field.onChange} defaultValue={field.value}>
-                                                    <SelectTrigger className="bg-gray-900/30 border-gray-700 text-white">
-                                                        <SelectValue placeholder="Select project domain" />
-                                                    </SelectTrigger>
-                                                    <SelectContent className="bg-gray-900 border-gray-700 text-white">
-                                                        <SelectItem value="edtech">EdTech</SelectItem>
-                                                        <SelectItem value="hrtech">HR Tech</SelectItem>
-                                                        <SelectItem value="web3">Web3</SelectItem>
-                                                        <SelectItem value="other">Other</SelectItem>
-                                                    </SelectContent>
-                                                </Select>
-                                            )}
+                                        <Label htmlFor="communityReferral" className="text-gray-300">Referred by (Optional)</Label>
+                                        <Input
+                                            id="communityReferral"
+                                            {...register('communityReferral')}
+                                            className="bg-gray-900/30 border-gray-700 text-white placeholder-gray-500 pl-10"
+                                            placeholder="Enter community referral name or code"
                                         />
                                     </div>
-                                    <div className="space-y-2">
-                                        <Label htmlFor="projectLink" className="text-gray-300">Inovact Social Project/Idea Link
-                                            *</Label>
-                                        <p className="text-sm text-gray-400">Please upload basic details of your project/idea on Inovact Social and paste the post link here</p>
-
-                                        <div className="relative">
-                                            <Folder className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500 h-5 w-5" />
-                                            <Input
-                                                id="projectLink"
-                                                {...register('projectLink', { required: true })}
-                                                className="bg-gray-900/30 border-gray-700 text-white placeholder-gray-500 pl-10"
-                                                placeholder="Enter project/idea link"
-                                            />
-                                        </div>
-                                        <div className="flex space-x-4"> {/* Added space-x-4 for horizontal spacing */}
-                                            <a href="https://play.google.com/store/apps/details?id=in.pranaydas.inovact">
-                                                <Button
-                                                    type="button"
-                                                    className="w-fit hover:bg-[#0d2c99]/60 bg-[#0d2c99] text-white"
-                                                >
-                                                    Download Inovact Social
-                                                </Button>
-                                            </a>
-                                            <a href="">
-                                                <Button
-                                                    type="button"
-                                                    className="w-fit hover:bg-[#0d2c99]/60 bg-[#0d2c99] text-white"
-                                                >
-                                                    Demo Video On Uploading Project/Idea On Inovact Social
-                                                </Button>
-                                            </a>
-                                        </div>
-                                    </div>
                                 </div>
-                            </div>
-
                             <Button type="submit" className="w-full bg-gradient-to-r from-gray-700 to-gray-900 hover:from-gray-800 hover:to-black text-white font-bold py-3 rounded-lg transition duration-300 ease-in-out transform hover:scale-105">
                                 Submit Registration
                                 <ChevronRight className="ml-2 h-5 w-5" />
@@ -308,6 +359,7 @@ export default function Component() {
                     </CardContent>
                 </Card>
             </div>
+            <ToastContainer />
         </div>
     )
 }
