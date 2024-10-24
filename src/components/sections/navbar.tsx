@@ -13,16 +13,15 @@ import {
 import { Separator } from "../ui/separator";
 import { Button } from "../ui/button";
 import Link from "next/link";
-
+import Image from "next/image";
 interface RouteProps {
     href: string;
     label: string;
 }
 
 const routeList: RouteProps[] = [
-    // { href: "/about", label: "About" },
-    // { href: "/services", label: "Services" },
-    // { href: "/contact", label: "Contact" },
+    { href: "https://www.inovact.in", label: "About Inovact" },
+    // Add more routes as needed
 ];
 
 export const Navbar = () => {
@@ -37,8 +36,9 @@ export const Navbar = () => {
         <>
             {isMounted && (
                 <header className="shadow-inner backdrop-blur-3xl bg-black/40 w-[90%] md:w-[70%] lg:w-[75%] lg:max-w-screen-xl top-5 mx-auto sticky border border-gray-900/45 z-40 rounded-2xl flex justify-between items-center p-2 bg-card">
-                    <Link href="/" className="font-bold text-lg flex items-center text-white">
-                        Inohax 1.0
+                    <Link href="/" className="font-bold text-lg flex items-center text-white space-x-3">
+                        {/* <Image src="/inovact.webp" className="rounded-full" alt="Inohax Logo" width={50} height={50} /> */}
+                        <span className="text-2xl">Inohax 1.0</span>
                     </Link>
                     {/* Mobile Menu */}
                     <div className="flex items-center lg:hidden">
@@ -89,14 +89,44 @@ export const Navbar = () => {
                     </div>
 
                     {/* Desktop Menu */}
-                    <div className="hidden lg:flex">
+                    <div className="hidden lg:flex relative">
                         {routeList.map(({ href, label }) => (
-                            <Link key={href} href={href} className="ml-4 text-lg text-white">
+                            <Link
+                                key={href}
+                                href={href}
+                                className="ml-4 text-sm text-white relative group"
+                            >
                                 {label}
+                                <span className="absolute left-0 -bottom-1 h-[2px] w-full bg-[#7877c64d] scale-x-0 transition-transform duration-300 group-hover:scale-x-100" />
                             </Link>
                         ))}
                     </div>
-                </header>
+                    <button className="bg-slate-800 no-underline group cursor-pointer relative shadow-2xl shadow-zinc-900 rounded-full p-px text-xs font-semibold leading-6  text-white inline-block">
+                        <span className="absolute inset-0 overflow-hidden rounded-full">
+                            <span className="absolute inset-0 rounded-full bg-[image:radial-gradient(75%_100%_at_50%_0%,rgba(56,189,248,0.6)_0%,rgba(56,189,248,0)_75%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+                        </span>
+                        <div className="relative flex space-x-2 items-center z-10 rounded-full bg-zinc-950 py-0.5 px-4 ring-1 ring-white/10 ">
+                            <span>
+                                Download Inovact Social
+                            </span>
+                            <svg
+                                fill="none"
+                                height="16"
+                                viewBox="0 0 24 24"
+                                width="16"
+                                xmlns="http://www.w3.org/2000/svg"
+                            >
+                                <path
+                                    d="M10.75 8.75L14.25 12L10.75 15.25"
+                                    stroke="currentColor"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    strokeWidth="1.5"
+                                />
+                            </svg>
+                        </div>
+                        <span className="absolute -bottom-0 left-[1.125rem] h-px w-[calc(100%-2.25rem)] bg-gradient-to-r from-purple-300/0 via-purple-300/90 to-purple-300/0 transition-opacity duration-500 group-hover:opacity-40" />
+                    </button>                </header>
             )}
         </>
     );

@@ -9,6 +9,8 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { ChevronRight, Plus, X, User, Link, Users2, Phone, Mail, Folder } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
+// import Link from 'next/link'
+
 interface TeamMember {
     name: string;
     socialMediaLink: string;
@@ -285,12 +287,14 @@ export default function Component() {
                                                     Download Inovact Social
                                                 </Button>
                                             </a>
-                                            <Button
-                                                type="button"
-                                                className="w-fit hover:bg-[#0d2c99]/60 bg-[#0d2c99] text-white"
-                                            >
-                                                Demo Video On Uploading Project/Idea On Inovact Social
-                                            </Button>
+                                            <a href="">
+                                                <Button
+                                                    type="button"
+                                                    className="w-fit hover:bg-[#0d2c99]/60 bg-[#0d2c99] text-white"
+                                                >
+                                                    Demo Video On Uploading Project/Idea On Inovact Social
+                                                </Button>
+                                            </a>
                                         </div>
                                     </div>
                                 </div>

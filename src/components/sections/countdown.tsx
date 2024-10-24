@@ -43,7 +43,7 @@ const useCountdown = () => {
 
 const AnimatedNumber = ({ number }: { number: number }) => (
   <div className="relative w-24 h-24 flex items-center justify-center">
-    <div className="absolute inset-0 bg-gradient-to-br from-purple-600 to-blue-500 rounded-lg shadow-lg"></div>
+    <div className="absolute inset-0 bg-gradient-to-b from-[#7877c64d]/40 to-black/70 rounded-lg shadow-lg"></div>
     <div className="absolute inset-0.5 bg-black rounded-lg flex items-center justify-center overflow-hidden">
       <AnimatePresence mode='wait'>
         <motion.span
