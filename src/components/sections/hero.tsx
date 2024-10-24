@@ -3,8 +3,8 @@ import RetroGrid from "../ui/grid";
 import { ArrowUpRight } from "lucide-react";
 import Benefits from "./benefits";
 import Link from "next/link";
-import Countdown from "./countdown";
 import { Navbar } from "@/components/sections/navbar"; // Import Navbar
+import Countdown from "./countdown";
 
 export default function Hero() {
     return (
@@ -41,11 +41,9 @@ export default function Hero() {
                             </Link>
                         </div>
                     </div>
-                    <div className="mt-16 mx-10">
-                        <div className="py-10 border-1 border border-white rounded-sm w-full items-center text-center">
-                            <p>Countdown here</p>
-                        </div>
-                    </div>
+                   
+                       <Countdown/>
+                   
                 </div>
             </section>
         </div>
