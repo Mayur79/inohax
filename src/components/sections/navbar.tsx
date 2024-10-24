@@ -37,7 +37,7 @@ export const Navbar = () => {
         <>
             {isMounted && (
                 <header className="shadow-inner backdrop-blur-3xl bg-black/40 w-[90%] md:w-[70%] lg:w-[75%] lg:max-w-screen-xl top-5 mx-auto sticky border border-gray-900/45 z-40 rounded-2xl flex justify-between items-center p-2 bg-card">
-                    <Link href="/" className="font-bold text-lg flex items-center">
+                    <Link href="/" className="font-bold text-lg flex items-center text-white">
                         Inohax 1.0
                     </Link>
                     {/* Mobile Menu */}
@@ -58,7 +58,7 @@ export const Navbar = () => {
                                     <div>
                                         <SheetHeader className="mb-4 ml-4">
                                             <SheetTitle className="flex items-center">
-                                                <Link href="/" className="flex items-center">
+                                                <Link href="/" className="flex items-center text-white">
                                                     Inohax 1.0
                                                 </Link>
                                             </SheetTitle>
@@ -70,7 +70,7 @@ export const Navbar = () => {
                                                     key={href}
                                                     onClick={() => setIsOpen(false)}
                                                     asChild
-                                                    className="justify-start text-base"
+                                                    className="justify-start text-base text-white"
                                                 >
                                                     <Link href={href} className="w-full text-left">
                                                         {label}

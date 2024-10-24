@@ -7,7 +7,7 @@ const useCountdown = () => {
   const calculateTimeLeft = () => {
     const now = new Date()
     let targetDate = new Date(now.getFullYear(), 10, 9, 11, 0, 0)
-    
+
     if (now > targetDate) {
       targetDate = new Date(now.getFullYear() + 1, 10, 9, 11, 0, 0)
     }
@@ -28,7 +28,7 @@ const useCountdown = () => {
     }
   }
 
-  const [timeLeft, setTimeLeft] = useState(calculateTimeLeft())
+  const [timeLeft, setTimeLeft] = useState(() => calculateTimeLeft()) // Initialize with a function
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -69,13 +69,11 @@ const TimeUnit = ({ value, label }: { value: number, label: string }) => (
 )
 
 export default function Countdown() {
-  const timeLeft = useCountdown()
+  const timeLeft = useCountdown(); // Ensure this uses state and effects properly
 
   return (
     <div className="w-full">
-   
-      <div className="bg-black bg-opacity-70 p-12 rounded-3xl shadow-2xl backdrop-blur-xl ">
-   
+      <div className="bg-black bg-opacity-70 p-12 rounded-3xl shadow-2xl backdrop-blur-xl">
         {timeLeft.isComplete ? (
           <p className="text-center text-4xl font-bold text-green-500">Hackathon in Progress!</p>
         ) : (
@@ -86,7 +84,6 @@ export default function Countdown() {
             <TimeUnit value={timeLeft.seconds} label="Seconds" />
           </div>
         )}
-        
       </div>
     </div>
   )

@@ -26,9 +26,9 @@ export default function Component() {
   }, [isInView])
 
   return (
-    <div className="min-h-screen bg-black text-gray-100 p-8 flex flex-col items-center overflow-hidden">
+    <div className="min-h-screen bg-black text-white p-8 flex flex-col items-center overflow-hidden">
       <motion.h1
-        className="text-5xl font-bold mb-16 bg-clip-text text-transparent bg-gradient-to-r from-purple-400 via-pink-500 to-red-500"
+        className="text-5xl font-bold mb-16 bg-clip-text text-transparent bg-gradient-to-r from-purple-500 via-pink-500 to-red-500"
         initial={{ opacity: 0, y: -50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
@@ -77,7 +77,7 @@ function TimelineEvent({ event, index, isExpanded, onToggle }: TimelineEventProp
       transition={{ delay: index * 0.1, duration: 0.5 }}
     >
       <motion.div
-        className="w-16 h-16 rounded-full bg-gray-900 flex items-center justify-center z-10 shadow-lg border border-gray-800"
+        className="w-16 h-16 rounded-full bg-black flex items-center justify-center z-10 shadow-lg border border-gray-700"
         whileHover={{ scale: 1.1, rotate: 360 }}
         transition={{ duration: 0.3 }}
       >
@@ -85,7 +85,7 @@ function TimelineEvent({ event, index, isExpanded, onToggle }: TimelineEventProp
       </motion.div>
       <div className="ml-8 flex-1">
         <motion.div
-          className="bg-gray-900 rounded-2xl p-6 shadow-xl border border-gray-800 hover:border-purple-500 transition-all duration-300 cursor-pointer"
+          className="bg-black rounded-2xl p-6 shadow-xl border border-gray-700 hover:border-purple-500 transition-all duration-300 cursor-pointer"
           whileHover={{ scale: 1.03, boxShadow: "0 8px 30px rgba(139, 92, 246, 0.1)" }}
           onClick={onToggle}
         >
@@ -123,7 +123,7 @@ function TimelineEvent({ event, index, isExpanded, onToggle }: TimelineEventProp
                 transition={{ duration: 0.3 }}
               >
                 <motion.div
-                  className="mt-4 text-gray-300 bg-gray-800 p-4 rounded-xl"
+                  className="mt-4 text-gray-300 bg-black p-4 rounded-xl"
                   initial={{ y: 20, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
                   transition={{ duration: 0.3, delay: 0.1 }}
@@ -132,7 +132,6 @@ function TimelineEvent({ event, index, isExpanded, onToggle }: TimelineEventProp
                     Get ready for an exciting phase of our hackathon! This event marks a crucial milestone in our journey towards innovation and creativity.
                   </p>
                   <p>
-                    Prepare yourself for intense coding, brainstorming, and collaboration. Don&apos;t forget to leverage the resources and mentorship available to make the most of this opportunity!
                     Prepare yourself for intense coding, brainstorming, and collaboration. Don&apos;t forget to leverage the resources and mentorship available to make the most of this opportunity!
                   </p>
                 </motion.div>
