@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useState, useRef, useEffect } from 'react'
+import React, { useRef, useEffect } from 'react'
 import { motion, useInView } from 'framer-motion'
 import { Calendar, Clock } from 'lucide-react'
 
@@ -15,7 +15,6 @@ const events = [
 ]
 
 export default function Component() {
-  const [expandedIndex, setExpandedIndex] = useState<number | null>(null)
   const timelineRef = useRef<HTMLDivElement>(null)
   const isInView = useInView(timelineRef, { once: true, amount: 0.2 })
 
