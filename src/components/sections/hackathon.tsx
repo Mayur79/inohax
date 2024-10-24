@@ -1,8 +1,8 @@
 "use client"
 
 import React, { useState, useRef, useEffect } from 'react'
-import { motion, AnimatePresence, useInView } from 'framer-motion'
-import { ChevronDown, ChevronUp, Calendar, Clock } from 'lucide-react'
+import { motion, useInView } from 'framer-motion'
+import { Calendar, Clock } from 'lucide-react'
 
 const events = [
   { date: "26th October 2024", time: "", title: "Applications Open", icon: "🚀", color: "from-purple-400 to-indigo-400" },
