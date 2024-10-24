@@ -276,16 +276,18 @@ export default function Component() {
                                                 placeholder="Enter project/idea link"
                                             />
                                         </div>
-                                        <div className="flex">
-                                            <a href="play.google.com/store/apps/details?id=in.pranaydas.inovact"> <Button
-                                                type="button"
-                                                className="w-fit hover:bg-[#0d2c99]/60 bg-[#0d2c99] text-white "
-                                            >
-                                                Download Inovact Social
-                                            </Button></a>
+                                        <div className="flex space-x-4"> {/* Added space-x-4 for horizontal spacing */}
+                                            <a href="https://play.google.com/store/apps/details?id=in.pranaydas.inovact">
+                                                <Button
+                                                    type="button"
+                                                    className="w-fit hover:bg-[#0d2c99]/60 bg-[#0d2c99] text-white"
+                                                >
+                                                    Download Inovact Social
+                                                </Button>
+                                            </a>
                                             <Button
                                                 type="button"
-                                                className="w-fit hover:bg-[#0d2c99]/60 bg-[#0d2c99] text-white "
+                                                className="w-fit hover:bg-[#0d2c99]/60 bg-[#0d2c99] text-white"
                                             >
                                                 Demo Video On Uploading Project/Idea On Inovact Social
                                             </Button>
