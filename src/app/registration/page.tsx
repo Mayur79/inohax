@@ -86,7 +86,7 @@ export default function Component() {
             </span>
           </h1>
         </div>
-        
+
         <Card className="backdrop-blur-lg bg-black/30 border border-gray-700 shadow-2xl shadow-gray-500/20">
           <CardHeader>
             <CardTitle className="text-2xl font-bold text-center text-gray-300">Team Registration</CardTitle>
@@ -103,7 +103,7 @@ export default function Component() {
                       <Input 
                         id="teamName" 
                         {...register('teamName', { required: true })}
-                        className="bg-gray-900/30 border-gray-700 text-white placeholder-gray-500 pl-10" 
+                        className="bg-gray-900/30 border-gray-700 text-white placeholder-gray-500 pl-10"
                         placeholder="Enter team name"
                       />
                     </div>
@@ -115,7 +115,7 @@ export default function Component() {
                       <Input 
                         id="teamLeaderName" 
                         {...register('teamLeaderName', { required: true })}
-                        className="bg-gray-900/30 border-gray-700 text-white placeholder-gray-500 pl-10" 
+                        className="bg-gray-900/30 border-gray-700 text-white placeholder-gray-500 pl-10"
                         placeholder="Enter leader name"
                       />
                     </div>
@@ -127,8 +127,8 @@ export default function Component() {
                       <Input 
                         id="teamLeaderPhone" 
                         {...register('teamLeaderPhone', { required: true })}
-                        type="tel" 
-                        className="bg-gray-900/30 border-gray-700 text-white placeholder-gray-500 pl-10" 
+                        type="tel"
+                        className="bg-gray-900/30 border-gray-700 text-white placeholder-gray-500 pl-10"
                         placeholder="Enter phone number"
                       />
                     </div>
@@ -140,14 +140,14 @@ export default function Component() {
                       <Input 
                         id="teamLeaderEmail" 
                         {...register('teamLeaderEmail', { required: true })}
-                        type="email" 
-                        className="bg-gray-900/30 border-gray-700 text-white placeholder-gray-500 pl-10" 
+                        type="email"
+                        className="bg-gray-900/30 border-gray-700 text-white placeholder-gray-500 pl-10"
                         placeholder="Enter email address"
                       />
                     </div>
                   </div>
                 </div>
-                
+
                 <div className="space-y-4">
                   <h3 className="text-xl font-semibold text-gray-300">Team Members</h3>
                   <AnimatePresence>
@@ -163,7 +163,7 @@ export default function Component() {
                         <div className="flex items-center justify-between mb-2">
                           <h4 className="text-lg font-medium text-gray-300">Team Member {index + 1}</h4>
                           {index >= 3 && (
-                            <Button 
+                            <Button
                               type="button"
                               onClick={() => removeTeamMember(index)}
                               variant="ghost"
@@ -187,7 +187,7 @@ export default function Component() {
                                 defaultValue={member.name}
                                 rules={{ required: index < 3 }}
                                 render={({ field }) => (
-                                  <Input 
+                                  <Input
                                     {...field}
                                     id={`memberName${index}`}
                                     onChange={(e) => {
@@ -213,7 +213,7 @@ export default function Component() {
                                 defaultValue={member.socialMediaLink}
                                 rules={{ required: index < 3 }}
                                 render={({ field }) => (
-                                  <Input 
+                                  <Input
                                     {...field}
                                     id={`memberLink${index}`}
                                     onChange={(e) => {
@@ -231,7 +231,7 @@ export default function Component() {
                       </motion.div>
                     ))}
                   </AnimatePresence>
-                  <Button 
+                  <Button
                     type="button"
                     onClick={addTeamMember}
                     className="w-full bg-gray-700 hover:bg-gray-600 text-white transition-all duration-300 ease-in-out transform hover:scale-105"
@@ -240,7 +240,7 @@ export default function Component() {
                     Add Team Member
                   </Button>
                 </div>
-                
+
                 <div className="space-y-4">
                   <h3 className="text-xl font-semibold text-gray-300">Project Details</h3>
                   <div className="space-y-2">
@@ -270,7 +270,7 @@ export default function Component() {
                       <Input 
                         id="projectLink" 
                         {...register('projectLink', { required: true })}
-                        className="bg-gray-900/30 border-gray-700 text-white placeholder-gray-500 pl-10" 
+                        className="bg-gray-900/30 border-gray-700 text-white placeholder-gray-500 pl-10"
                         placeholder="Enter project link"
                       />
                     </div>
