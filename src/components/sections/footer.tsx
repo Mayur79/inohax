@@ -1,6 +1,6 @@
 import React from "react";
 import LinkArrow from "./linkArrow";
-import Link from 'next/link';
+
 
 function Footer() {
 	return (
