@@ -27,7 +27,6 @@ export default function Component() {
                     <TimelineEvent
                         key={index}
                         event={event}
-                        index={index}
                     />
                 ))}
             </div>
@@ -43,10 +42,9 @@ interface TimelineEventProps {
         icon: string
         color: string
     }
-    index: number
 }
 
-function TimelineEvent({ event, index }: TimelineEventProps) {
+function TimelineEvent({ event }: TimelineEventProps) {
     return (
         <div className="mb-12 flex">
             <div className="w-16 h-16 rounded-full bg-black flex items-center justify-center z-10 shadow-lg border border-gray-700">
