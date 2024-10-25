@@ -17,6 +17,12 @@ export default function MentorJurySection() {
 
     const mentors = [
         {
+            name: "Sarang Pani",
+            designation: "Founder, Inovact",
+            image: jury5,
+            linkedin: "https://www.linkedin.com/in/sarang-pani-14ab1919b/"
+        },
+        {
             name: "Chandrakanth",
             designation: "Head of Programs & Partnerships, SJCE STEP",
             image: jury1,
@@ -40,12 +46,7 @@ export default function MentorJurySection() {
             image: jury4,
             linkedin: "https://www.linkedin.com/in/akshayrameshh/"
         },
-        {
-            name: "Sarang Pani",
-            designation: "Founder, Inovact",
-            image: jury5,
-            linkedin: "https://www.linkedin.com/in/sarang-pani-14ab1919b/"
-        },
+
     ]
 
     const juryMembers = [
@@ -106,7 +107,7 @@ export default function MentorJurySection() {
                             variants={containerVariants}
                             initial="hidden"
                             animate="visible"
-                            className="grid gap-2 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 justify-center"
+                            className="grid csscode gap-2 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 justify-center"
                             >
                             {mentors.map((mentor, index) => (
                                 <motion.div

@@ -57,8 +57,8 @@ function TimelineEvent({ event }: TimelineEventProps) {
                             {event.title}
                         </h2>
                     </div>
-                    <div className="flex items-center text-sm text-gray-400 mb-2">
-                        <Calendar className="w-4 h-4 mr-2 text-purple-400" />
+                    <div className="flex items-center text-lg text-gray-400 mb-2">
+                        <Calendar className="w-4 h-4 mr-2 text-lg text-purple-400" />
                         {event.date}
                         {event.time && (
                             <>
