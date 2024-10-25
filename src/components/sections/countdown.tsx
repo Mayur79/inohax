@@ -52,7 +52,7 @@ const AnimatedNumber = ({ number }: { number: number }) => (
           animate={{ y: 0, opacity: 1 }}
           exit={{ y: '-100%', opacity: 0 }}
           transition={{ duration: 0.5, ease: [0.23, 1, 0.32, 1] }}
-          className="text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-blue-500"
+          className="text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-b from-[#38bdf899] to-white/50"
         >
           {number.toString().padStart(2, '0')}
         </motion.span>
