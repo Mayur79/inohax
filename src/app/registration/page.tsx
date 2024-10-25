@@ -160,22 +160,22 @@ export default function Component() {
 
 
                                 <div className="space-y-4">
-                                    <h3 className="text-xl font-semibold text-gray-300">Project Details</h3>
+                                    <h3 className="text-xl font-semibold text-gray-300">Project/Idea Details</h3>
                                     <div className="space-y-2">
-                                        <Label htmlFor="projectDomain" className="text-gray-300">Project Domain</Label>
+                                        <Label htmlFor="projectDomain" className="text-gray-300">Project/Idea Domain</Label>
                                         <Controller
                                             name="projectDomain"
                                             control={control}
                                             render={({ field }) => (
                                                 <Select onValueChange={field.onChange} defaultValue={field.value}>
                                                     <SelectTrigger className="bg-gray-900/30 border-gray-700 text-white">
-                                                        <SelectValue placeholder="Select project domain" />
+                                                        <SelectValue placeholder="Select Project / Idea Domain" />
                                                     </SelectTrigger>
                                                     <SelectContent className="bg-gray-900 border-gray-700 text-white">
                                                         <SelectItem value="edtech">EdTech</SelectItem>
                                                         <SelectItem value="hrtech">HR Tech</SelectItem>
                                                         <SelectItem value="web3">Web3</SelectItem>
-                                                      
+
                                                         <SelectItem value="FinTech"> FinTech </SelectItem>
                                                         <SelectItem value="HealthTech">HealthTech    </SelectItem>
                                                         <SelectItem value="AgriTech"> AgriTech    </SelectItem>
@@ -212,40 +212,50 @@ export default function Component() {
                                                     Download Inovact Social
                                                 </Button>
                                             </a>
-                                            <a href="https://drive.google.com/file/d/1T_PpfjWKoUyOlJE5X3g9DTRUPL4xdB6o/view?usp=drivesdk" target='_blank'>
+                                            <a href="https://drive.google.com/file/d/1T_PpfjWKoUyOlJE5X3g9DTRUPL4xdB6o/view?usp=drivesdk" className='hidden md:block' target='_blank'>
                                                 <Button
                                                     type="button"
                                                     className="w-fit hover:bg-[#0d2c99]/60 bg-[#0d2c99] text-white"
                                                 >
-                                                    Demo Video On Uploading Project/Idea On Inovact Social
+                                                     Demo On Uploading Project/Idea On Inovact Social
                                                 </Button>
                                             </a>
                                         </div>
+                                        <div className="mt-4 md:hidden"> {/* New button for mobile size */}
+                                            <a href="https://drive.google.com/file/d/1T_PpfjWKoUyOlJE5X3g9DTRUPL4xdB6o/view?usp=drivesdk" target='_blank'>
+                                                <Button
+                                                    type="button"
+                                                    className="w-full hover:bg-[#0d2c99]/60 bg-[#0d2c99] text-white"
+                                                >
+                                                     Demo On Uploading Project/Idea On Inovact Social
+                                                     </Button>
+                                            </a>
+                                        </div>
                                           {/* New Community Referral Field */}
-                              
+
                                     </div>
-                            
+
                                 </div>
                                 <div className="space-y-4">
                                     <div className='flex flex-col md:flex-row justify-between'>
 
                                   <div>
 
-                           
+
                                     <h3 className="text-xl font-semibold text-gray-300">Team Members</h3>
                                     </div>
                                     <div>
 
-                                   
+
                                     <a href="https://drive.google.com/file/d/1Ahsj2IQ7F4m9xXnIyUo7T8JPDY8eVm0D/view?usp=drivesdk" target='_blank'>
                                                 <Button
                                                     type="button"
                                                     className="w-fit hover:bg-[#0d2c99]/60 bg-[#0d2c99] text-white"
                                                 >
-                                                  Demo Video for Sharing Profile Link on Inovact Social
+                                                   Demo on Sharing Profile Link on Inovact Social
                                                 </Button>
                                             </a>
-                                            </div> 
+                                            </div>
                                             </div>
                                     <AnimatePresence>
                                         {teamMembers.map((member, index) => (

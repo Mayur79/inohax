@@ -25,7 +25,7 @@ export default function Benefits() {
             <div className="max-w-screen-xl mx-auto px-6 text-gray-400 md:px-8">
                 <div className="relative max-w-2xl mx-auto sm:text-center">
                     <div className="relative z-10">
-                        <h3 className="text-gray-200 text-3xl font-semibold sm:text-4xl font-geist tracking-tighter">
+                        <h3 className="text-gray-200 text-center text-3xl font-semibold sm:text-4xl font-geist tracking-tighter">
                             Why Participate?
                         </h3>
                     </div>
