@@ -42,7 +42,7 @@ const useCountdown = () => {
 }
 
 const AnimatedNumber = ({ number }: { number: number }) => (
-  <div className="relative w-24 h-24 flex items-center justify-center">
+  <div className="relative w-16 h-16 md:w-24 md:h-24 flex items-center justify-center">
     <div className="absolute inset-0 bg-gradient-to-b from-[#7877c64d]/40 to-black/70 rounded-lg shadow-lg"></div>
     <div className="absolute inset-0.5 bg-black rounded-lg flex items-center justify-center overflow-hidden">
       <AnimatePresence mode='wait'>
@@ -52,7 +52,7 @@ const AnimatedNumber = ({ number }: { number: number }) => (
           animate={{ y: 0, opacity: 1 }}
           exit={{ y: '-100%', opacity: 0 }}
           transition={{ duration: 0.5, ease: [0.23, 1, 0.32, 1] }}
-          className="text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-b from-[#38bdf899] to-white/50"
+          className="text-3xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-b from-[#38bdf899] to-white/50"
         >
           {number.toString().padStart(2, '0')}
         </motion.span>
@@ -77,7 +77,7 @@ export default function Countdown() {
         {timeLeft.isComplete ? (
           <p className="text-center text-4xl font-bold text-green-500">Hackathon in Progress!</p>
         ) : (
-          <div className="flex justify-center space-x-8 px-20">
+          <div className="flex justify-center space-x-4 px-20">
             <TimeUnit value={timeLeft.days} label="Days" />
             <TimeUnit value={timeLeft.hours} label="Hours" />
             <TimeUnit value={timeLeft.minutes} label="Minutes" />
